@@ -27,6 +27,8 @@ def worker(remote, parent_remote, env_fn_wrappers):
                 break
             elif cmd == 'get_spaces_spec':
                 remote.send(CloudpickleWrapper((envs[0].observation_space, envs[0].action_space, envs[0].spec)))
+            elif cmd == 'get_action_meanings':
+                remote.send(CloudpickleWrapper((envs[0].get_action_meanings())))
             else:
                 raise NotImplementedError
     except KeyboardInterrupt:
@@ -41,6 +43,7 @@ class SubprocVecEnv(VecEnv):
     VecEnv that runs multiple environments in parallel in subproceses and communicates with them via pipes.
     Recommended to use when num_envs > 1 and step() can be a bottleneck.
     """
+
     def __init__(self, env_fns, spaces=None, context='spawn', in_series=1):
         """
         Arguments:
@@ -70,6 +73,10 @@ class SubprocVecEnv(VecEnv):
         observation_space, action_space, self.spec = self.remotes[0].recv().x
         self.viewer = None
         VecEnv.__init__(self, nenvs, observation_space, action_space)
+
+    def get_action_meanings(self):
+        self.remotes[0].send(('get_action_meanings', None))
+        return self.remotes[0].recv().x
 
     def step_async(self, actions):
         self._assert_not_closed()
@@ -115,9 +122,13 @@ class SubprocVecEnv(VecEnv):
     def _assert_not_closed(self):
         assert not self.closed, "Trying to operate on a SubprocVecEnv after calling close()"
 
+    def stop(self):
+        self.close()
+
     def __del__(self):
         if not self.closed:
             self.close()
+
 
 def _flatten_obs(obs):
     assert isinstance(obs, (list, tuple))
@@ -128,6 +139,7 @@ def _flatten_obs(obs):
         return {k: np.stack([o[k] for o in obs]) for k in keys}
     else:
         return np.stack(obs)
+
 
 def _flatten_list(l):
     assert isinstance(l, (list, tuple))

@@ -3,7 +3,7 @@ import numpy as np
 import torch
 from torch import nn
 
-from models.dngpu_engine import CGRUCell
+from models.ngpu import CGRUCell
 from models.rewards import PoolingRewardDecoder
 from models.utils import tile_actions, binarize_rewards
 

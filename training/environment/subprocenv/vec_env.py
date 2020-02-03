@@ -2,7 +2,7 @@ import contextlib
 import os
 from abc import ABC, abstractmethod
 
-from data.subprocenv.util import tile_images
+from training.environment.subprocenv.util import tile_images
 
 
 class AlreadySteppingError(Exception):

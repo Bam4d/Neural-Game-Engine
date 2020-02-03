@@ -15,7 +15,7 @@ class GymLearner(Trainable):
 
     def __init__(self, hyperparameters, data_generator, initial_state_generator=None, trace_handler=None,
                  summary_writer=None):
-        super().__init__('NGE Learner', moderage_category=None, moderage_data_id=None, summary_writer=summary_writer)
+        super().__init__('NGE_Learner', moderage_category=None, moderage_data_id=None, summary_writer=summary_writer)
 
         self._hyperparameters = hyperparameters
         self._data_generator = data_generator
@@ -222,7 +222,7 @@ class GymLearner(Trainable):
         params = self._initial_state_generator.get_generator_params()
 
         levels = params['train']
-        initial_states = self._initial_state_generator.generate_samples(1, test=False)
+        initial_states = self._initial_state_generator.generate_samples(1)
         initial_state_files = self._get_initial_states(initial_states, levels)
 
         return initial_state_files

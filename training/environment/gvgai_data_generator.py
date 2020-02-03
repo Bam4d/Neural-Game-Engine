@@ -1,16 +1,14 @@
+import random
+from collections import Counter
 from collections import defaultdict
 
+import gym
+import numpy as np
 from gvgai import get_games_path
 from gvgai.client.types import Action
 
-
-import nge_gym
-from collections import Counter
-import numpy as np
-import random
-import gym
-
 from training.environment.data_generator import DataGenerator
+from training.environment.subprocenv.sub_proc_vec_env import SubprocVecEnv
 
 
 def get_game_levels(game):
@@ -19,20 +17,17 @@ def get_game_levels(game):
 
 class GVGAIDataGenerator(DataGenerator):
 
-    def __init__(self, name, initial_level_env_level):
+    def __init__(self, name, env):
         super().__init__(name)
 
         # gvgai has a sprite size of 10
         self._sprite_size = 10
 
-        self._env = gym.make(initial_level_env_level)
+        self._env = env
+
         self._n_actions = self._env.action_space.n
         self._actions = self._env.unwrapped.get_action_meanings()
-
         self._actions.sort(key=lambda x: x.value)
-
-        self._n_actions = self._env.action_space.n
-        self._actions = self._env.unwrapped.get_action_meanings()
 
     def get_random_gvgai_action(self):
         return self._actions[np.random.randint(self._n_actions)].value
@@ -75,9 +70,10 @@ class GVGAILevelDataGenerator(GVGAIDataGenerator):
     """
 
     def __init__(self, envs):
-        super().__init__('GVGAI', envs[0])
-
+        env = gym.make(envs[0])
         self._envs = envs
+
+        super().__init__('GVGAI Levels', env)
 
     def get_generator_params(self):
         return {
@@ -154,7 +150,6 @@ class GVGAILevelDataGenerator(GVGAIDataGenerator):
 class GVGAIRandomGenerator(GVGAIDataGenerator):
 
     def __init__(self, game_name, generate_symmetries=True):
-        super().__init__('NGE Learner', f'gvgai-{game_name}-custom-v0')
 
         self._game_name = game_name
         self._game_location = f'{get_games_path()}/{game_name}_v0'
@@ -170,6 +165,16 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         else:
             self._n_envs = 1
 
+        env = SubprocVecEnv([self._make_envs('gvgai-sokoban-custom-v0', max_steps=-1) for i in range(self._n_envs)])
+
+        super().__init__('NGE Learner', env)
+
+    def _make_envs(self, id, **kwargs):
+        def _f():
+            env = gym.make(id, **kwargs)
+            return env
+
+        return _f
 
     def _create_level_configs(self, game_level_stats):
 
@@ -207,7 +212,7 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         game_description = self._get_game_description()
         game_levels = self._get_level_descriptions()
 
-        tile_types = defaultdict(set)
+        tile_types = defaultdict(list)
         tile_averages = defaultdict(lambda: 0.0)
         tile_prob = defaultdict(lambda: 0.0)
         tile_counter = Counter()
@@ -259,7 +264,7 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         if len(edge_counter) == 1:
             edge_char = list(edge_counter.keys())[0]
             # This tile is always on the edge of the map
-            tile_types[edge_char].add('edge')
+            tile_types[edge_char].append('edge')
             has_edge = True
 
         # if theres a wall around the outside of the grid then calculate probabilities only with respect to stuff inside
@@ -279,9 +284,9 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
 
             # There has to exactly one of these in every level
             if tile_average == 1.0:
-                tile_types[tile].add('singleton')
+                tile_types[tile].append('singleton')
             else:
-                tile_types[tile].add('sparse')
+                tile_types[tile].append('sparse')
                 if 'edge' in tile_types[tile]:
                     tile_prob[tile] = (tile_counter[tile] - edge_counter) / level_size_sum
                 else:
@@ -354,10 +359,10 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         actions = [self.get_random_gvgai_action() for n in range(batch_size)]
 
         if not generate_symmetries:
-            return [actions]
+            return np.array([actions])
 
         if not has_all_directions:
-            return [actions]
+            return np.array([actions])
 
         for flips in range(2):
             for rots in range(4):
@@ -365,7 +370,7 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
                 actions = self._rotate_actions90(actions)
             actions = self._flip_actions_vert(actions)
 
-        return symmetric_actions
+        return np.array(symmetric_actions)
 
     def _get_action_name(self, action):
         if action == 0:
@@ -381,7 +386,6 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
 
     def generate_samples(self, batch_size, test=None):
         batches = []
-
 
         for config in self._level_configs:
 
