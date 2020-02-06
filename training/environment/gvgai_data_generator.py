@@ -9,6 +9,7 @@ from gvgai.client.types import Action
 
 from training.environment.data_generator import DataGenerator
 from training.environment.subprocenv.sub_proc_vec_env import SubprocVecEnv
+from training.environment.level_generator_configs import level_generator_configs
 
 
 def get_game_levels(game):
@@ -156,9 +157,7 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
 
         self._generate_symmetries = generate_symmetries
 
-        game_level_stats = self._create_level_stats()
-
-        self._level_configs = self._create_level_configs(game_level_stats)
+        self._level_configs = self._create_level_configs(game_name)
 
         if self._generate_symmetries:
             self._n_envs = 8
@@ -176,7 +175,12 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
 
         return _f
 
-    def _create_level_configs(self, game_level_stats):
+    def _create_level_configs(self, game_name):
+
+        if game_name in level_generator_configs:
+            return level_generator_configs[game_name]
+
+        game_level_stats = self._create_level_stats()
 
         # Create random training level configs
         train_configs = []

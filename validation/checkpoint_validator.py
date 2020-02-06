@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 import numpy as np
+import pandas as pd
 import logging
 
 from training.environment.gvgai_data_generator import GVGAILevelDataGenerator

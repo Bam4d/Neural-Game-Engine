@@ -166,6 +166,9 @@ class PredictionAccuracyMeasure():
 
     def calculate(self, steps, repeats):
 
+        if steps == 0 or repeats == 0:
+            return {}
+
         all_test_data = defaultdict(lambda: {})
 
         for level_comparison_data in self._collect_data(steps, repeats):

@@ -15,8 +15,10 @@ class EnvironmentLoader():
         if model._trace_handler is None:
             model._trace_handler = trace_handler
 
-        # Register environments
+        # Load initial states
         initial_observation = np.load(intial_state_file) if intial_state_file is not None else None
+
+        model.eval()
 
         register(
             id=game_id,
@@ -34,7 +36,7 @@ class EnvironmentLoader():
 
         return model
 
-    def load_model_from_moderage(self, id, category):
+    def load_model(self, id, category):
         """
         Just loads and returns the environment model
         :param id:
@@ -48,7 +50,7 @@ class EnvironmentLoader():
 
         return model, data
 
-    def load_environments_from_moderage(self, id, category):
+    def load_environments(self, id, category):
         """
         Loads the environment model and levels from the initial conditions
         :param id:
@@ -59,8 +61,6 @@ class EnvironmentLoader():
         """
 
         model, data = self.load_model_from_moderage(id, category)
-
-        model.eval()
 
         steps = data.meta['automata_steps']
         num_actions = data.meta['num_actions']

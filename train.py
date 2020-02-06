@@ -30,7 +30,7 @@ if __name__ == '__main__':
     validation_steps = args.validation_steps
 
     hyperparameters = {
-        'state_channels': 50,
+        'state_channels': 64,
         'ngpu_iterations': ngpu_iterations,
 
         'batch_size': 32,
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         'gradient_clip': 0.1,
 
         'reward_loss_coeff': 0.03,
-        'reward_state_channels': 200,
+        'reward_state_channels': 64,
         'reward_class_weight': [0.01, 0.99],
 
         'saturation_limit': 0.99,

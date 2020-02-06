@@ -22,6 +22,8 @@ Clone the GVGAI library from `https://github.com/Bam4d/GVGAI_GYM` and install it
 Clone:
 `git clone https://github.com/Bam4d/GVGAI_GYM.git`
 
+Navigate to the `GVGAI_GYM/python/gvgai` directory (this is where the GVGAI python library is located).
+
 Install it into your python environment by using:
 `pip install -e .`
 
