@@ -69,9 +69,12 @@ Once the game has trained it is assigned a random ID and then is stored in `gym/
 
 ## Play
 
+To test out the pre-trained environments, you can play them using your keyboard. 
+W,A,S,D keys and space are mapped to up, left, down, right and use respectively.
+
 For example playing level 3 of the pre-trained model with Id `308e9d7c-371f-495d-9f53-95170220e5b1`
 ```
-python play.py --level 3 --model "308e9d7c-371f-495d-9f53-95170220e5b1"`
+python play.py --level 3 --id "308e9d7c-371f-495d-9f53-95170220e5b1"`
 ```
 
 ## Statistical Forward Planning
