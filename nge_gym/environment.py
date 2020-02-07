@@ -2,6 +2,9 @@ import gym
 import numpy as np
 import torch
 
+from training.environment.subprocenv.util import tile_images
+
+
 class NeuralGameEngineGym(gym.Env):
 
     def __init__(self, model=None, steps=1, initial_observation=np.zeros(1), sprite_size=10, num_actions=0, action_mapping=None,
@@ -56,17 +59,13 @@ class NeuralGameEngineGym(gym.Env):
 
         # (batch, action)
         if isinstance(action, int):
-            actions = np.expand_dims(np.array(action), 0)
-        elif len(action.shape) < 2:
-            actions = np.reshape(action, (-1, 1))
-        else:
-            actions = action
+            action = np.expand_dims(np.array(action), 0)
 
         inputs = np.swapaxes(self._observation / 255.0, 3, 1)
 
         batch = {
             'input_observation_batch': inputs,
-            'input_action_batch': actions
+            'input_action_batch': action
         }
 
         self._forward(batch)
@@ -112,21 +111,26 @@ class NeuralGameEngineGym(gym.Env):
                 self._window = self._pyglet.window.Window(width=self._width, height=self._height, vsync=False,
                                                           resizable=True)
 
-            image = self._pyglet.image.ImageData(self._observation_shape[1],
-                                                 self._observation_shape[0],
+
+            tiled_image = tile_images(self._observation)
+
+            image = self._pyglet.image.ImageData(tiled_image.shape[1],
+                                                 tiled_image.shape[0],
                                                  'RGB',
-                                                 self._observation.tobytes(),
-                                                 pitch=self._observation_shape[1] * -3
+                                                 tiled_image.tobytes(),
+                                                 pitch=tiled_image.shape[1] * -3
                                                  )
+
+
 
             texture = image.get_texture()
             texture.width = self._width
             texture.height = self._height
             self._window.clear()
+            self._gl.glTexParameteri(self._gl.GL_TEXTURE_2D, self._gl.GL_TEXTURE_MAG_FILTER, self._gl.GL_NEAREST)
+            self._gl.glTexParameteri(self._gl.GL_TEXTURE_2D, self._gl.GL_TEXTURE_MIN_FILTER, self._gl.GL_NEAREST)
             self._window.switch_to()
             self._window.dispatch_events()
-            self._gl.glTexParameteri(self._gl.GL_TEXTURE_2D, self._gl.GL_TEXTURE_MIN_FILTER, self._gl.GL_NEAREST)
-            self._gl.glTexParameteri(self._gl.GL_TEXTURE_2D, self._gl.GL_TEXTURE_MAG_FILTER, self._gl.GL_NEAREST)
             texture.blit(0, 0)  # draw
             self._window.flip()
 
@@ -137,7 +141,6 @@ class NeuralGameEngineGym(gym.Env):
         super().close()
 
     def seed(self, seed=None):
-        self._window = None
         self._initial_observation = seed
 
         if len(self._initial_observation.shape) == 3:

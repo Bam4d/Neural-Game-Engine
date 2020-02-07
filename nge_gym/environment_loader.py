@@ -60,9 +60,9 @@ class EnvironmentLoader():
         :return:
         """
 
-        model, data = self.load_model_from_moderage(id, category)
+        model, data = self.load_model(id, category)
 
-        steps = data.meta['automata_steps']
+        iterations = data.meta['ngpu_iterations']
         num_actions = data.meta['num_actions']
         action_mapping = data.meta['action_map']
 
@@ -75,6 +75,6 @@ class EnvironmentLoader():
 
             levels.append(game_id)
 
-            self.register_environment_model(game_id, model, steps, num_actions, action_mapping, state_files)
+            self.register_environment_model(game_id, model, iterations, num_actions, action_mapping, state_files)
 
         return model, data.meta, levels
