@@ -29,10 +29,10 @@ class NotSteppingError(Exception):
 
 class VecEnv(ABC):
     """
-    An abstract asynchronous, vectorized nge_gym.
-    Used to batch data from multiple copies of an nge_gym, so that
+    An abstract asynchronous, vectorized gym.
+    Used to batch data from multiple copies of an gym, so that
     each observation becomes an batch of observations, and expected action is a batch of actions to
-    be applied per-nge_gym.
+    be applied per-gym.
     """
     closed = False
     viewer = None
@@ -117,7 +117,7 @@ class VecEnv(ABC):
 
     def get_images(self):
         """
-        Return RGB images from each nge_gym
+        Return RGB images from each gym
         """
         raise NotImplementedError
 
@@ -130,13 +130,13 @@ class VecEnv(ABC):
 
     def get_viewer(self):
         if self.viewer is None:
-            from nge_gym.envs.classic_control import rendering
+            from gym.envs.classic_control import rendering
             self.viewer = rendering.SimpleImageViewer()
         return self.viewer
 
 class VecEnvWrapper(VecEnv):
     """
-    An nge_gym wrapper that applies to an entire batch
+    An gym wrapper that applies to an entire batch
     of environments at once.
     """
 
@@ -204,8 +204,8 @@ class CloudpickleWrapper(object):
 @contextlib.contextmanager
 def clear_mpi_env_vars():
     """
-    from mpi4py import MPI will call MPI_Init by default.  If the child process has MPI nge_gym variables, MPI will think that the child process is an MPI process just like the parent and do bad things such as hang.
-    This context manager is a hacky way to clear those nge_gym variables temporarily such as when we are starting multiprocessing
+    from mpi4py import MPI will call MPI_Init by default.  If the child process has MPI gym variables, MPI will think that the child process is an MPI process just like the parent and do bad things such as hang.
+    This context manager is a hacky way to clear those gym variables temporarily such as when we are starting multiprocessing
     Processes.
     """
     removed_environment = {}

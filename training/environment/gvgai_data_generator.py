@@ -164,7 +164,7 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         else:
             self._n_envs = 1
 
-        env = SubprocVecEnv([self._make_envs('gvgai-sokoban-custom-v0', max_steps=-1) for i in range(self._n_envs)])
+        env = SubprocVecEnv([self._make_envs(f'gvgai-{game_name}-custom-v0', max_steps=-1) for i in range(self._n_envs)])
 
         super().__init__('NGE Learner', env)
 
@@ -388,6 +388,9 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         if action == 4:
             return 'right'
 
+    def generate_levels(self):
+        return [self.generate_level_data(config, generate_symmetries=self._generate_symmetries) for config in self._level_configs]
+
     def generate_samples(self, batch_size, test=None):
         batches = []
 
@@ -414,6 +417,8 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
                 action = actions[:, b]
 
                 observation, reward, done, _ = self._env.step(action.tolist())
+
+                self._env.render()
 
                 # If the first step is done == True then this is a bad Env and we should rebuild it
                 if b == 0 and done.any():
