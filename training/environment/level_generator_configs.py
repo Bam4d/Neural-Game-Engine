@@ -16,5 +16,22 @@ level_generator_configs = {
             '0': {'types': ['sparse'], 'prob': 0.15}
         }
     }],
+    'cookmepasta': [{
+        'min_width': 5,
+        'min_height': 5,
+        'max_width': 7,
+        'max_height': 7,
+        'tiles': {
+            'w': {'types': ['edge', 'sparse'], 'prob': 0.15},
+            '.': {'types': ['sparse'], 'prob': 0.85},
+            'p': {'types': ['singleton']},
+            'o': {'types': ['singleton']},
+            'A': {'types': ['singleton']},
+            'b': {'types': ['singleton']},
+            't': {'types': ['singleton']},
+            'l': {'types': ['sparse'], 'prob': 0.00},
+            'k': {'types': ['sparse'], 'prob': 0.00}
+        }
+    }]
 
 }

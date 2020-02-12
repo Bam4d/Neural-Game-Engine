@@ -418,6 +418,8 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
 
                 observation, reward, done, _ = self._env.step(action.tolist())
 
+                reward = np.maximum(0, reward)
+
                 # If the first step is done == True then this is a bad Env and we should rebuild it
                 if b == 0 and done.any():
                     return self.generate_samples(batch_size, test)

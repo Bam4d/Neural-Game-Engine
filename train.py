@@ -38,7 +38,7 @@ if __name__ == '__main__':
         'gradient_clip': 0.1,
 
         'reward_loss_coeff': 0.02,
-        'reward_state_channels': 64,
+        'reward_state_channels': 128,
         'reward_class_weight': [0.01, 0.99],
 
         'saturation_limit': 0.99,
