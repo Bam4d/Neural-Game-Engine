@@ -32,6 +32,22 @@ level_generator_configs = {
             'l': {'types': ['sparse'], 'prob': 0.00},
             'k': {'types': ['sparse'], 'prob': 0.00}
         }
+    }],
+    "bait": [{
+        'min_width': 8.0,
+        'min_height': 8.0,
+        'max_width': 12.0,
+        'max_height': 12.0,
+        'tiles': {
+            'w': {'types': ['edge', 'sparse'], 'prob': 0.1},
+            'g': {'types': ['singleton']},
+            'A': {'types': ['singleton']},
+            '.': {'types': ['sparse'], 'prob': 0.5},
+            '1': {'types': ['sparse'], 'prob': 0.2},
+            'k': {'types': ['singleton']},
+            '0': {'types': ['sparse'], 'prob': 0.2},
+            'm': {'types': ['sparse'], 'prob': 0.00}
+        }
     }]
 
 }

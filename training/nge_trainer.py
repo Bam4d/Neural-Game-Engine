@@ -142,20 +142,19 @@ class GymLearner(Trainable):
         return np.mean(train_batch_losses), loss_component_collector
 
     def eval(self, t_batch, trace=False):
-        with torch.no_grad:
-            # Get predictions
-            predictions, saturation_costs = self.forward(
-                t_batch, steps=self._iterations, trace=trace)
+        # Get predictions
+        predictions, saturation_costs = self.forward(
+            t_batch, steps=self._iterations, trace=trace)
 
-            # Calculate losses
-            loss, loss_components = self._loss(predictions, t_batch,
-                                               saturation_costs)
+        # Calculate losses
+        loss, loss_components = self._loss(predictions, t_batch,
+                                           saturation_costs)
 
-            # Get loss
-            loss.backward()
+        # Get loss
+        loss.backward()
 
-            # Return the loss from the single batch step
-            return (loss.data.detach().cpu().numpy(), loss_components), predictions
+        # Return the loss from the single batch step
+        return (loss.data.detach().cpu().numpy(), loss_components), predictions
 
     def train_batch(self, t_batch):
         # Get predictions
