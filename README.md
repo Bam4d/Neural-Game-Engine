@@ -94,3 +94,4 @@ The Id of several accurate pre-trained models are below, you can use these ids t
 | sokoban       | 308e9d7c-371f-495d-9f53-95170220e5b1  | gvgai-sokoban-lvl0-v0       |
 | cookmepasta   | 07ba2338-47ea-494a-9fbb-a4379aefac88  | gvgai-cookmepasta-lvl0-v0   |
 | bait          | 05ee7d11-328a-440d-974e-a73c3a146d12  | gvgai-bait-lvl0-v0          |
+| brainman      | 426f7256-2843-45b4-b43a-3402cd5e8786  | gvgai-brainman-lvl0-v0      |
