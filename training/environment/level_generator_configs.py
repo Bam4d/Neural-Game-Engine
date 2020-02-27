@@ -48,6 +48,24 @@ level_generator_configs = {
             '0': {'types': ['sparse'], 'prob': 0.2},
             'm': {'types': ['sparse'], 'prob': 0.00}
         }
+    }],
+    "brainman": [{
+        'min_width': 8.0,
+        'min_height': 8.0,
+        'max_width': 12.0,
+        'max_height': 12.0,
+        'tiles': {
+            'w': {'types': ['edge', 'sparse'], 'prob': 0.1},
+            'A': {'types': ['singleton']},
+            '.': {'types': ['sparse'], 'prob': 0.6},
+            'g': {'types': ['sparse'], 'prob': 0.05},
+            'r': {'types': ['sparse'], 'prob': 0.05},
+            'b': {'types': ['sparse'], 'prob': 0.05},
+            'd': {'types': ['sparse'], 'prob': 0.05},
+            'e': {'types': ['singleton']},
+            'k': {'types': ['sparse'], 'prob': 0.01},
+            'O': {'types': ['sparse'], 'prob': 0.01}
+        }
     }]
 
 }
