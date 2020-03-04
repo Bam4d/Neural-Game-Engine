@@ -72,12 +72,26 @@ level_generator_configs = {
         'max_width': 8,
         'min_height': 12,
         'max_height': 12,
-        'tiles': {'w': {'types': ['edge', 'sparse'], 'prob': 0.5},
-                  '.': {'types': ['sparse'], 'prob': 0.45},
-                  'x': {'types': ['singleton']},
-                  't': {'types': ['sparse'], 'prob': 0.05},
-                  'A': {'types': ['singleton']}
-                  }
+        'tiles': {
+            'w': {'types': ['edge', 'sparse'], 'prob': 0.5},
+            '.': {'types': ['sparse'], 'prob': 0.45},
+            'x': {'types': ['singleton']},
+            't': {'types': ['sparse'], 'prob': 0.05},
+            'A': {'types': ['singleton']}
+        }
+    }],
+    "realsokoban": [{
+        'min_width': 8.0,
+        'max_width': 8.0,
+        'min_height': 8.0,
+        'max_height': 8.0,
+        'tiles': {
+            'w': {'types': ['edge', 'sparse'], 'prob': 0.2},
+            '.': {'types': ['sparse'], 'prob': 0.4},
+            'o': {'types': ['sparse'], 'prob': 0.2},
+            '*': {'types': ['sparse'], 'prob': 0.2},
+            'A': {'types': ['singleton']}
+        }
     }]
 
 }
