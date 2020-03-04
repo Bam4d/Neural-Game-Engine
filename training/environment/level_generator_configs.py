@@ -66,6 +66,18 @@ level_generator_configs = {
             'k': {'types': ['sparse'], 'prob': 0.01},
             'O': {'types': ['sparse'], 'prob': 0.01}
         }
+    }],
+    "labyrinth": [{
+        'min_width': 8,
+        'max_width': 8,
+        'min_height': 12,
+        'max_height': 12,
+        'tiles': {'w': {'types': ['edge', 'sparse'], 'prob': 0.5},
+                  '.': {'types': ['sparse'], 'prob': 0.45},
+                  'x': {'types': ['singleton']},
+                  't': {'types': ['sparse'], 'prob': 0.05},
+                  'A': {'types': ['singleton']}
+                  }
     }]
 
 }
