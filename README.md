@@ -67,6 +67,15 @@ python train.py -e 5000 -G sokoban
 
 Once the game has trained it is assigned a random ID and then is stored in `gym/pre-trained/[ID]`
 
+### Level Generation
+
+Forward models are trained using data from generated game levels. For many games, level generation parameters have to be optimized to 
+produce a good distribution of states and actions when a random agent is used.
+Level generation configurations are stored in `training/environment/level_generator_configs.py`
+If there is no config for a particular game in this file. 
+The level generator will create statistics based on the default GVGAI levels. 
+In most cases this does not produce levels that train particularly fast and sometimes are quite innaccurate.
+
 ## Play
 
 To test out the pre-trained environments, you can play them using your keyboard. 
@@ -95,3 +104,5 @@ The Id of several accurate pre-trained models are below, you can use these ids t
 | cookmepasta   | 07ba2338-47ea-494a-9fbb-a4379aefac88  | gvgai-cookmepasta-lvl0-v0   |
 | bait          | 05ee7d11-328a-440d-974e-a73c3a146d12  | gvgai-bait-lvl0-v0          |
 | brainman      | 426f7256-2843-45b4-b43a-3402cd5e8786  | gvgai-brainman-lvl0-v0      |
+| labyrinth     | 6eaf354b-4c06-4f2f-93a2-551a548294d8  | gvgai-labyrinth-lvl0-v0     |
+| 
