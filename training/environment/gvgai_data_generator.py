@@ -11,9 +11,17 @@ from training.environment.data_generator import DataGenerator
 from training.environment.subprocenv.sub_proc_vec_env import SubprocVecEnv
 from training.environment.level_generator_configs import level_generator_configs
 
+# re
+bad_levels = [
+    'gvgai-painter-lvl0-v0',
+    'gvgai-painter-lvl2-v0',
+    'gvgai-painter-lvl3-v0',
+    'gvgai-painter-lvl4-v0'
+]
 
 def get_game_levels(game):
-    return [f'gvgai-{game}-lvl{l}-v0' for l in range(5)]
+    levels = [f'gvgai-{game}-lvl{l}-v0' for l in range(5)]
+    return [level for level in levels if level not in bad_levels]
 
 
 class GVGAIDataGenerator(DataGenerator):

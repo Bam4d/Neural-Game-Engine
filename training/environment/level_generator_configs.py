@@ -92,6 +92,17 @@ level_generator_configs = {
             '*': {'types': ['sparse'], 'prob': 0.2},
             'A': {'types': ['singleton']}
         }
+    }],
+    "painter": [{
+        'min_width': 5,
+        'max_width': 7.0,
+        'min_height': 5,
+        'max_height': 7.0,
+        'tiles': {
+            'A': {'types': ['singleton']},
+            '.': {'types': ['sparse'], 'prob': 0.8},
+            'x': {'types': ['sparse'], 'prob': 0.1},
+            'w': {'types': ['sparse'], 'prob': 0.1}}
     }]
 
 }
