@@ -34,10 +34,10 @@ level_generator_configs = {
         }
     }],
     "bait": [{
-        'min_width': 8.0,
-        'min_height': 8.0,
-        'max_width': 12.0,
-        'max_height': 12.0,
+        'min_width': 8,
+        'min_height': 8,
+        'max_width': 12,
+        'max_height': 12,
         'tiles': {
             'w': {'types': ['edge', 'sparse'], 'prob': 0.1},
             'g': {'types': ['singleton']},
@@ -50,10 +50,10 @@ level_generator_configs = {
         }
     }],
     "brainman": [{
-        'min_width': 8.0,
-        'min_height': 8.0,
-        'max_width': 12.0,
-        'max_height': 12.0,
+        'min_width': 8,
+        'min_height': 8,
+        'max_width': 12,
+        'max_height': 12,
         'tiles': {
             'w': {'types': ['edge', 'sparse'], 'prob': 0.1},
             'A': {'types': ['singleton']},
@@ -81,15 +81,33 @@ level_generator_configs = {
         }
     }],
     "realsokoban": [{
-        'min_width': 8.0,
-        'max_width': 8.0,
-        'min_height': 8.0,
-        'max_height': 8.0,
+        'min_width': 8,
+        'max_width': 8,
+        'min_height': 8,
+        'max_height': 8,
         'tiles': {
             'w': {'types': ['edge', 'sparse'], 'prob': 0.2},
             '.': {'types': ['sparse'], 'prob': 0.4},
             'o': {'types': ['sparse'], 'prob': 0.2},
             '*': {'types': ['sparse'], 'prob': 0.2},
+            'A': {'types': ['singleton']}
+        }
+    }],
+    "clusters": [{
+        'min_width': 8,
+        'max_width': 12,
+        'min_height': 8,
+        'max_height': 12,
+        'tiles': {
+            'w': {'types': ['edge', 'sparse'], 'prob': 0.0},
+            '.': {'types': ['sparse'], 'prob': 0.3},
+            '1': {'types': ['sparse'], 'prob': 0.1},
+            '2': {'types': ['sparse'], 'prob': 0.1},
+            '3': {'types': ['sparse'], 'prob': 0.1},
+            'a': {'types': ['sparse'], 'prob': 0.1},
+            'b': {'types': ['sparse'], 'prob': 0.1},
+            'c': {'types': ['sparse'], 'prob': 0.1},
+            'h': {'types': ['sparse'], 'prob': 0.01},
             'A': {'types': ['singleton']}
         }
     }]
