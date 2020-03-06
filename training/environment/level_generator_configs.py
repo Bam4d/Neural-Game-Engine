@@ -93,6 +93,17 @@ level_generator_configs = {
             'A': {'types': ['singleton']}
         }
     }],
+    "painter": [{
+        'min_width': 5,
+        'max_width': 7,
+        'min_height': 5,
+        'max_height': 7,
+        'tiles': {
+            'A': {'types': ['singleton']},
+            '.': {'types': ['sparse'], 'prob': 0.8},
+            'x': {'types': ['sparse'], 'prob': 0.1},
+            'w': {'types': ['sparse'], 'prob': 0.1}}
+    }],
     "clusters": [{
         'min_width': 8,
         'max_width': 12,

@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
         'reward_loss_coeff': 0.02,
         'reward_state_channels': 64,
-        'reward_class_weight': [0.01, 0.99],
+        'reward_class_weight': [0.5, 0.5],
 
         'saturation_limit': 0.99,
         'saturation_cost_weight': 0.001,

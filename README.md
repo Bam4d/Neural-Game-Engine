@@ -106,3 +106,4 @@ The Id of several accurate pre-trained models are below, you can use these ids t
 | brainman      | 426f7256-2843-45b4-b43a-3402cd5e8786  | gvgai-brainman-lvl0-v0      |
 | labyrinth     | 6eaf354b-4c06-4f2f-93a2-551a548294d8  | gvgai-labyrinth-lvl0-v0     |
 | realsokoban   | 0cecd4fd-15e0-4531-87bf-4b2e3cd4e673  | gvgai-realsokoban-lvl0-v0   |
+| painter       | 971eb685-4968-4c86-a940-70299226391e  | gvgai-painter-lvl1-v0       |
