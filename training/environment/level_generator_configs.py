@@ -81,10 +81,10 @@ level_generator_configs = {
         }
     }],
     "realsokoban": [{
-        'min_width': 8.0,
-        'max_width': 8.0,
-        'min_height': 8.0,
-        'max_height': 8.0,
+        'min_width': 8,
+        'max_width': 8,
+        'min_height': 8,
+        'max_height': 8,
         'tiles': {
             'w': {'types': ['edge', 'sparse'], 'prob': 0.2},
             '.': {'types': ['sparse'], 'prob': 0.4},
@@ -95,14 +95,24 @@ level_generator_configs = {
     }],
     "painter": [{
         'min_width': 5,
-        'max_width': 7.0,
+        'max_width': 7,
         'min_height': 5,
-        'max_height': 7.0,
+        'max_height': 7,
         'tiles': {
             'A': {'types': ['singleton']},
             '.': {'types': ['sparse'], 'prob': 0.8},
             'x': {'types': ['sparse'], 'prob': 0.1},
             'w': {'types': ['sparse'], 'prob': 0.1}}
-    }]
+    }],
+    "zenpuzzle": [{
+        'min_width': 8,
+        'max_width': 12,
+        'min_height': 8,
+        'max_height': 12,
+        'tiles': {
+            '.': {'types': ['edge', 'sparse'], 'prob': 0.5},
+            'g': {'types': ['sparse'], 'prob': 0.4},
+            'A': {'types': ['singleton']},
+            'r': {'types': ['sparse'], 'prob': 0.1}}}]
 
 }

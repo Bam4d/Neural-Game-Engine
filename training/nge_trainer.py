@@ -95,7 +95,7 @@ class GymLearner(Trainable):
         # Calculate cross entropy loss for reward
         reward_target_class = reward_targets.type(torch.long)
         ce_reward_loss = self._ce_reward_loss_criterion(reward_predictions, reward_target_class)
-        loss_components['ce_reward_loss'] = ce_reward_loss * self._reward_loss_coeff
+
 
         reward_predictions_np = np.argmax(reward_predictions.detach().cpu().numpy(), axis=1)
         reward_target_np = reward_target_class.detach().cpu().numpy()
@@ -108,12 +108,16 @@ class GymLearner(Trainable):
 
         total_loss = torch.sum(torch.stack([loss for _, loss in loss_components.items()]))
 
+        loss_components['ce_reward_loss'] = ce_reward_loss
+        total_loss += ce_reward_loss * self._reward_loss_coeff
+
         detached_loss_components = {k: loss.detach().cpu().numpy() for k, loss in loss_components.items()}
 
         detached_loss_components['reward_precision'] = reward_precision
         detached_loss_components['reward_recall'] = reward_recall
         detached_loss_components['reward_bacc'] = reward_bacc
         detached_loss_components['reward_f1'] = reward_f1
+
 
         reward_rate = (reward_targets.detach().cpu().numpy().sum(axis=1) > 0).sum() / batch_size
 

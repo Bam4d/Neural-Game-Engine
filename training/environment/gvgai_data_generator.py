@@ -19,6 +19,7 @@ bad_levels = [
     'gvgai-painter-lvl4-v0'
 ]
 
+
 def get_game_levels(game):
     levels = [f'gvgai-{game}-lvl{l}-v0' for l in range(5)]
     return [level for level in levels if level not in bad_levels]
@@ -172,7 +173,8 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         else:
             self._n_envs = 1
 
-        env = SubprocVecEnv([self._make_envs(f'gvgai-{game_name}-custom-v0', max_steps=-1) for i in range(self._n_envs)])
+        env = SubprocVecEnv(
+            [self._make_envs(f'gvgai-{game_name}-custom-v0', max_steps=-1) for i in range(self._n_envs)])
 
         super().__init__('NGE Learner', env)
 
@@ -193,17 +195,17 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
         # Create random training level configs
         train_configs = []
 
-        if game_level_stats['level']['consistent_rows'] and game_level_stats['level']['consistent_cols']:
+        if game_level_stats['level']['consistent_rows']:
             min_height = game_level_stats['level']['rows']
             max_height = game_level_stats['level']['rows']
-
-            min_width = game_level_stats['level']['cols']
-            max_width = game_level_stats['level']['cols']
-
         else:
             min_height = game_level_stats['level']['rows_mean']
             max_height = game_level_stats['level']['rows_mean'] * 2
 
+        if game_level_stats['level']['consistent_cols']:
+            min_width = game_level_stats['level']['cols']
+            max_width = game_level_stats['level']['cols']
+        else:
             min_width = game_level_stats['level']['cols_mean']
             max_width = game_level_stats['level']['cols_mean'] * 2
 
@@ -397,7 +399,8 @@ class GVGAIRandomGenerator(GVGAIDataGenerator):
             return 'right'
 
     def generate_levels(self):
-        return [self.generate_level_data(config, generate_symmetries=self._generate_symmetries) for config in self._level_configs]
+        return [self.generate_level_data(config, generate_symmetries=self._generate_symmetries) for config in
+                self._level_configs]
 
     def generate_samples(self, batch_size, test=None):
         batches = []
