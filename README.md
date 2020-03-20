@@ -100,11 +100,13 @@ The Id of several accurate pre-trained models are below, you can use these ids t
 
 | Game          | ID                                    | GVGAI environment example   |
 |:-------------:|:-------------------------------------:|:---------------------------:|
-| sokoban       | 308e9d7c-371f-495d-9f53-95170220e5b1  | gvgai-sokoban-lvl0-v0       |
-| cookmepasta   | 07ba2338-47ea-494a-9fbb-a4379aefac88  | gvgai-cookmepasta-lvl0-v0   |
-| bait          | 05ee7d11-328a-440d-974e-a73c3a146d12  | gvgai-bait-lvl0-v0          |
-| brainman      | 426f7256-2843-45b4-b43a-3402cd5e8786  | gvgai-brainman-lvl0-v0      |
-| labyrinth     | 6eaf354b-4c06-4f2f-93a2-551a548294d8  | gvgai-labyrinth-lvl0-v0     |
-| realsokoban   | 0cecd4fd-15e0-4531-87bf-4b2e3cd4e673  | gvgai-realsokoban-lvl0-v0   |
-| painter       | 971eb685-4968-4c86-a940-70299226391e  | gvgai-painter-lvl1-v0       |
-| zenpuzzle     | 7640b1a5-82d6-4971-a476-857945a08888  | gvgai-zenpuzzle-lvl0-v0     |
+| sokoban       | 4e899a4f-80f4-4abe-8f80-87ae6f1a610c  | gvgai-sokoban-lvl0-v0       |
+| cookmepasta   | 156d9619-cea9-44ab-80e4-7d7ef937f094  | gvgai-cookmepasta-lvl0-v0   |
+| bait          | b59b1802-6285-44c5-9ee5-4e12f8da8a5c  | gvgai-bait-lvl0-v0          |
+| brainman      | 595c1e30-8af6-4383-bb6f-68efd652d29f  | gvgai-brainman-lvl0-v0      |
+| labyrinth     | 7752dbb5-facf-4b3a-934a-2c1e69fad6be  | gvgai-labyrinth-lvl0-v0     |
+| realsokoban   | 1a9a5d6f-013e-44d0-9c77-f30b633bdd54  | gvgai-realsokoban-lvl0-v0   |
+| painter       | 59c7810f-7112-4a3a-bf65-b6fcb8718ad5  | gvgai-painter-lvl1-v0       |
+| zenpuzzle     | 21654615-5656-404e-9aec-1a16a13dab47  | gvgai-zenpuzzle-lvl0-v0     |
+| clusters      | 9ccce85b-5497-4377-84f0-cbe8e8ff54fd  | gvgai-clusters-lvl0-v0      |
+| aliens        | 6c6b2bb3-f9f6-4b0a-8f15-19269b05acc0  | gvgai-aliens-lvl0-v0        |

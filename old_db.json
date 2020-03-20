@@ -1,0 +1,1687 @@
+{
+  "_default": {
+    "1": {
+      "id": "308e9d7c-371f-495d-9f53-95170220e5b1",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1581071580993,
+      "endedTimestamp": 1581076675847,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 64,
+        "reward_class_weight": [
+          0.01,
+          0.99
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_height": 8,
+            "min_width": 8,
+            "max_height": 10,
+            "max_width": 10,
+            "tiles": {
+              "w": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.1
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.6
+              },
+              "1": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.15
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "0": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.15
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00000161",
+        "train_ce_reward_loss_final": "0.00001409",
+        "train_saturation_loss_final": "0.00000008",
+        "train_reward_precision_final": "0.99071970",
+        "train_reward_recall_final": "0.99772727",
+        "train_reward_bacc_final": "0.99883242",
+        "train_reward_f1_final": "0.99556327",
+        "train_reward_rate_final": "0.00750000"
+      },
+      "files": [
+        {
+          "id": "f5c3bbea-3d2c-4702-aca0-f7effa584bdd",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/f5c3bbea-3d2c-4702-aca0-f7effa584bdd"
+        },
+        {
+          "id": "061dd188-deed-4214-bbb8-1eb047081dfb",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/061dd188-deed-4214-bbb8-1eb047081dfb"
+        },
+        {
+          "id": "e89bfdb4-95cf-4f09-b83f-6c11fb824f51",
+          "caption": "Initial state for training level: gvgai-sokoban-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-sokoban-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/e89bfdb4-95cf-4f09-b83f-6c11fb824f51"
+        },
+        {
+          "id": "5bf28d47-96c7-4296-89b9-a627711a6f4d",
+          "caption": "Initial state for training level: gvgai-sokoban-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-sokoban-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/5bf28d47-96c7-4296-89b9-a627711a6f4d"
+        },
+        {
+          "id": "09238b8c-7fe3-4ae1-9135-6aa19e2df972",
+          "caption": "Initial state for training level: gvgai-sokoban-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-sokoban-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/09238b8c-7fe3-4ae1-9135-6aa19e2df972"
+        },
+        {
+          "id": "0a65753c-aa35-4eb2-8dc4-8e9488a0c212",
+          "caption": "Initial state for training level: gvgai-sokoban-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-sokoban-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/0a65753c-aa35-4eb2-8dc4-8e9488a0c212"
+        },
+        {
+          "id": "a76f58f1-8b2f-46b6-acbb-7a10a9361a5f",
+          "caption": "Initial state for training level: gvgai-sokoban-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-sokoban-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/a76f58f1-8b2f-46b6-acbb-7a10a9361a5f"
+        },
+        {
+          "id": "c579bb4b-f0b0-4e00-9a3c-7286b4ec1f09",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/c579bb4b-f0b0-4e00-9a3c-7286b4ec1f09"
+        },
+        {
+          "id": "9f431eee-8bb5-459c-9c22-5b564c41953e",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/9f431eee-8bb5-459c-9c22-5b564c41953e"
+        },
+        {
+          "id": "338fc477-2922-4bc8-bf8c-00499d42805a",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/338fc477-2922-4bc8-bf8c-00499d42805a"
+        },
+        {
+          "id": "894bb452-6854-4292-a122-d173dd78a144",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/894bb452-6854-4292-a122-d173dd78a144"
+        },
+        {
+          "id": "8480fd01-b1f7-42a8-9529-8a9f33e0a168",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/8480fd01-b1f7-42a8-9529-8a9f33e0a168"
+        },
+        {
+          "id": "f513bd77-5202-491a-9684-48a228b98462",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/f513bd77-5202-491a-9684-48a228b98462"
+        },
+        {
+          "id": "afb17dac-af85-4708-969b-6239469cad02",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/afb17dac-af85-4708-969b-6239469cad02"
+        },
+        {
+          "id": "fa925c6d-3d91-4838-8150-1a5af2c720b6",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/fa925c6d-3d91-4838-8150-1a5af2c720b6"
+        },
+        {
+          "id": "7d358438-850b-4ffb-be6a-bdd74f90beaf",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/7d358438-850b-4ffb-be6a-bdd74f90beaf"
+        },
+        {
+          "id": "4805d8ab-4d71-4ef9-a06d-a0038a7f0b74",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-sokoban-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/308e9d7c-371f-495d-9f53-95170220e5b1/4805d8ab-4d71-4ef9-a06d-a0038a7f0b74"
+        }
+      ]
+    },
+    "2": {
+      "id": "07ba2338-47ea-494a-9fbb-a4379aefac88",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1581501150138,
+      "endedTimestamp": 1581505102601,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 128,
+        "reward_class_weight": [
+          0.01,
+          0.99
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 5,
+            "min_height": 5,
+            "max_width": 7,
+            "max_height": 7,
+            "tiles": {
+              "w": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.15
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.85
+              },
+              "p": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "o": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "b": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "t": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "l": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.0
+              },
+              "k": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.0
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00009225",
+        "train_ce_reward_loss_final": "0.00042058",
+        "train_saturation_loss_final": "0.00000197",
+        "train_reward_precision_final": "0.66380208",
+        "train_reward_recall_final": "0.85253906",
+        "train_reward_bacc_final": "0.92521606",
+        "train_reward_f1_final": "0.84155146",
+        "train_reward_rate_final": "0.00418750"
+      },
+      "files": [
+        {
+          "id": "6e39ec96-5aa6-46fb-9c64-c725dec74a59",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/6e39ec96-5aa6-46fb-9c64-c725dec74a59"
+        },
+        {
+          "id": "5aa8caa6-3f2f-48df-b136-4342fd83a955",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/5aa8caa6-3f2f-48df-b136-4342fd83a955"
+        },
+        {
+          "id": "fc66e5c6-7cb8-4438-8472-e710bc1e024c",
+          "caption": "Initial state for training level: gvgai-cookmepasta-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-cookmepasta-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/fc66e5c6-7cb8-4438-8472-e710bc1e024c"
+        },
+        {
+          "id": "b6b4693f-ad01-4917-9229-1fd131dbc3e0",
+          "caption": "Initial state for training level: gvgai-cookmepasta-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-cookmepasta-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/b6b4693f-ad01-4917-9229-1fd131dbc3e0"
+        },
+        {
+          "id": "8f35a68a-ace7-4b96-bd40-28b0d1329a57",
+          "caption": "Initial state for training level: gvgai-cookmepasta-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-cookmepasta-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/8f35a68a-ace7-4b96-bd40-28b0d1329a57"
+        },
+        {
+          "id": "e366075a-a519-4b4b-b670-09926f122db7",
+          "caption": "Initial state for training level: gvgai-cookmepasta-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-cookmepasta-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/e366075a-a519-4b4b-b670-09926f122db7"
+        },
+        {
+          "id": "92d4707c-d485-4595-b901-21bf8777ca1d",
+          "caption": "Initial state for training level: gvgai-cookmepasta-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-cookmepasta-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/92d4707c-d485-4595-b901-21bf8777ca1d"
+        },
+        {
+          "id": "dc3d101d-e669-4ff3-8826-bf77c089e5ec",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/dc3d101d-e669-4ff3-8826-bf77c089e5ec"
+        },
+        {
+          "id": "ad8c93f4-cc8e-4106-85e0-4f26f18b6910",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/ad8c93f4-cc8e-4106-85e0-4f26f18b6910"
+        },
+        {
+          "id": "ba4add1c-67fe-429c-9a82-c92225660d43",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/ba4add1c-67fe-429c-9a82-c92225660d43"
+        },
+        {
+          "id": "850fa441-dffa-4925-a25c-7fc8e03a37aa",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/850fa441-dffa-4925-a25c-7fc8e03a37aa"
+        },
+        {
+          "id": "039cbfed-55f2-4f5c-b99e-36b34fddeadb",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/039cbfed-55f2-4f5c-b99e-36b34fddeadb"
+        },
+        {
+          "id": "13bce28c-47f7-4fac-aaaa-bb7f500591ef",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/13bce28c-47f7-4fac-aaaa-bb7f500591ef"
+        },
+        {
+          "id": "dafc4eb8-f042-418e-a520-1944493d97d5",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/dafc4eb8-f042-418e-a520-1944493d97d5"
+        },
+        {
+          "id": "fd1aeb13-93b4-4dcd-9af3-08c4f597d887",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/fd1aeb13-93b4-4dcd-9af3-08c4f597d887"
+        },
+        {
+          "id": "158eba64-d480-42d2-a682-154bbcf1ca68",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/158eba64-d480-42d2-a682-154bbcf1ca68"
+        },
+        {
+          "id": "2c8847ae-d5ed-416f-8df4-e7a3931a73d8",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-cookmepasta-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/07ba2338-47ea-494a-9fbb-a4379aefac88/2c8847ae-d5ed-416f-8df4-e7a3931a73d8"
+        }
+      ]
+    },
+    "3": {
+      "id": "05ee7d11-328a-440d-974e-a73c3a146d12",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1581607929015,
+      "endedTimestamp": 1581613013624,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 128,
+        "reward_class_weight": [
+          0.01,
+          0.99
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 8.0,
+            "min_height": 8.0,
+            "max_width": 12.0,
+            "max_height": 12.0,
+            "tiles": {
+              "w": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.1
+              },
+              "g": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.5
+              },
+              "1": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.2
+              },
+              "k": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "0": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.2
+              },
+              "m": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.0
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00006576",
+        "train_ce_reward_loss_final": "0.00012911",
+        "train_saturation_loss_final": "0.00000079",
+        "train_reward_precision_final": "0.91542536",
+        "train_reward_recall_final": "0.99011093",
+        "train_reward_bacc_final": "0.99443295",
+        "train_reward_f1_final": "0.94010176",
+        "train_reward_rate_final": "0.01512500"
+      },
+      "files": [
+        {
+          "id": "1d392f22-4eca-429b-b1cf-6ee0cbd7f4e3",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/1d392f22-4eca-429b-b1cf-6ee0cbd7f4e3"
+        },
+        {
+          "id": "ec1e1182-9801-4410-aab4-87d3a87bb150",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/ec1e1182-9801-4410-aab4-87d3a87bb150"
+        },
+        {
+          "id": "ede78115-4686-4ab8-a372-28d7145e39ec",
+          "caption": "Initial state for training level: gvgai-bait-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-bait-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/ede78115-4686-4ab8-a372-28d7145e39ec"
+        },
+        {
+          "id": "a07ff5f5-a0a5-40ae-90b5-80680e7a1dcf",
+          "caption": "Initial state for training level: gvgai-bait-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-bait-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/a07ff5f5-a0a5-40ae-90b5-80680e7a1dcf"
+        },
+        {
+          "id": "5f1c7482-9d4f-4ffe-9cda-2eae7728a792",
+          "caption": "Initial state for training level: gvgai-bait-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-bait-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/5f1c7482-9d4f-4ffe-9cda-2eae7728a792"
+        },
+        {
+          "id": "943a8057-33cf-41e2-ba35-8d77f429246b",
+          "caption": "Initial state for training level: gvgai-bait-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-bait-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/943a8057-33cf-41e2-ba35-8d77f429246b"
+        },
+        {
+          "id": "aed571ec-a8fb-4a91-8046-b28b0d4fe20e",
+          "caption": "Initial state for training level: gvgai-bait-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-bait-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/aed571ec-a8fb-4a91-8046-b28b0d4fe20e"
+        },
+        {
+          "id": "9c8fb427-e22b-4bd8-9bb6-a62dfaf5b857",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/9c8fb427-e22b-4bd8-9bb6-a62dfaf5b857"
+        },
+        {
+          "id": "93535035-71d9-4e99-876e-982b543ea2aa",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/93535035-71d9-4e99-876e-982b543ea2aa"
+        },
+        {
+          "id": "7a350c5f-f34a-44ca-be48-599030b32055",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/7a350c5f-f34a-44ca-be48-599030b32055"
+        },
+        {
+          "id": "c523e993-77cd-44de-9bf1-debd1aceb8f9",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/c523e993-77cd-44de-9bf1-debd1aceb8f9"
+        },
+        {
+          "id": "12d74556-b7c3-443b-873f-b41988438372",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/12d74556-b7c3-443b-873f-b41988438372"
+        },
+        {
+          "id": "4dc00336-22c5-4c8c-8652-a1bc1696d5b1",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/4dc00336-22c5-4c8c-8652-a1bc1696d5b1"
+        },
+        {
+          "id": "f7142260-fe2a-4dcb-bc63-3cf788410ee7",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/f7142260-fe2a-4dcb-bc63-3cf788410ee7"
+        },
+        {
+          "id": "c10edaf3-8ac5-41f4-b505-c8a5e5ae10aa",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/c10edaf3-8ac5-41f4-b505-c8a5e5ae10aa"
+        },
+        {
+          "id": "650d127f-4f4c-4701-a1dc-de1b30a7a5f0",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/650d127f-4f4c-4701-a1dc-de1b30a7a5f0"
+        },
+        {
+          "id": "e6724fe6-e3ff-44fa-98a6-2a2d12292a49",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-bait-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/05ee7d11-328a-440d-974e-a73c3a146d12/e6724fe6-e3ff-44fa-98a6-2a2d12292a49"
+        }
+      ]
+    },
+    "4": {
+      "id": "426f7256-2843-45b4-b43a-3402cd5e8786",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1582825439999,
+      "endedTimestamp": 1582831986579,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 128,
+        "reward_class_weight": [
+          0.5,
+          0.5
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 8.0,
+            "min_height": 8.0,
+            "max_width": 12.0,
+            "max_height": 12.0,
+            "tiles": {
+              "w": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.1
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.6
+              },
+              "g": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.05
+              },
+              "r": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.05
+              },
+              "b": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.05
+              },
+              "d": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.05
+              },
+              "e": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "k": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.01
+              },
+              "O": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.01
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00001084",
+        "train_ce_reward_loss_final": "0.00001026",
+        "train_saturation_loss_final": "0.00000043",
+        "train_reward_precision_final": "0.99281473",
+        "train_reward_recall_final": "0.99097847",
+        "train_reward_bacc_final": "0.99548864",
+        "train_reward_f1_final": "0.99887186",
+        "train_reward_rate_final": "0.06256250"
+      },
+      "files": [
+        {
+          "id": "d5cbe98d-bdb8-4522-8533-7c735ff97227",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/d5cbe98d-bdb8-4522-8533-7c735ff97227"
+        },
+        {
+          "id": "ae289281-3a2a-424f-8d0b-3b551104d7c3",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/ae289281-3a2a-424f-8d0b-3b551104d7c3"
+        },
+        {
+          "id": "6c298686-d7f1-4222-9ceb-14875253681c",
+          "caption": "Initial state for training level: gvgai-brainman-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-brainman-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/6c298686-d7f1-4222-9ceb-14875253681c"
+        },
+        {
+          "id": "23d04509-56e4-4e34-ab76-3203e9af2c80",
+          "caption": "Initial state for training level: gvgai-brainman-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-brainman-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/23d04509-56e4-4e34-ab76-3203e9af2c80"
+        },
+        {
+          "id": "94090ecc-550e-4080-a9dc-020c19842a64",
+          "caption": "Initial state for training level: gvgai-brainman-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-brainman-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/94090ecc-550e-4080-a9dc-020c19842a64"
+        },
+        {
+          "id": "b4f3c891-3b71-4ceb-8f52-7c0945644f2c",
+          "caption": "Initial state for training level: gvgai-brainman-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-brainman-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/b4f3c891-3b71-4ceb-8f52-7c0945644f2c"
+        },
+        {
+          "id": "a5d060a2-4cf2-43b2-a7a5-171c6022e069",
+          "caption": "Initial state for training level: gvgai-brainman-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-brainman-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/a5d060a2-4cf2-43b2-a7a5-171c6022e069"
+        },
+        {
+          "id": "e4775ff7-925a-4c89-8683-afeac4da427a",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/e4775ff7-925a-4c89-8683-afeac4da427a"
+        },
+        {
+          "id": "d0bbf10e-4bcd-4ecd-8366-58a3329de764",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/d0bbf10e-4bcd-4ecd-8366-58a3329de764"
+        },
+        {
+          "id": "0f9a44c6-454f-4116-a50e-232abce268fa",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/0f9a44c6-454f-4116-a50e-232abce268fa"
+        },
+        {
+          "id": "9244617a-9419-43e0-b9e6-ae3cdaeecb19",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/9244617a-9419-43e0-b9e6-ae3cdaeecb19"
+        },
+        {
+          "id": "e806efbf-c304-4b3d-8673-293451690ab7",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/e806efbf-c304-4b3d-8673-293451690ab7"
+        },
+        {
+          "id": "dcfd8946-f5b9-4150-b0b6-b7adde61dff8",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/dcfd8946-f5b9-4150-b0b6-b7adde61dff8"
+        },
+        {
+          "id": "86dfdc8b-0c8f-4f35-8b72-bcd72d9b6533",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/86dfdc8b-0c8f-4f35-8b72-bcd72d9b6533"
+        },
+        {
+          "id": "bf863f7e-790a-4db0-a861-5ad235b5f063",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/bf863f7e-790a-4db0-a861-5ad235b5f063"
+        },
+        {
+          "id": "59fcd71e-57e5-48d2-b39a-3416302ccffd",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/59fcd71e-57e5-48d2-b39a-3416302ccffd"
+        },
+        {
+          "id": "5acfe148-4c8d-4d50-aed7-468976d832a5",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-brainman-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/426f7256-2843-45b4-b43a-3402cd5e8786/5acfe148-4c8d-4d50-aed7-468976d832a5"
+        }
+      ]
+    },
+    "5": {
+      "id": "6eaf354b-4c06-4f2f-93a2-551a548294d8",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1583319957552,
+      "endedTimestamp": 1583325350999,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 64,
+        "reward_class_weight": [
+          0.01,
+          0.99
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 8,
+            "max_width": 8,
+            "min_height": 12,
+            "max_height": 12,
+            "tiles": {
+              "w": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.5
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.45
+              },
+              "x": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "t": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.05
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00000931",
+        "train_ce_reward_loss_final": "0.00000012",
+        "train_saturation_loss_final": "0.00000040",
+        "train_reward_precision_final": "1.00000000",
+        "train_reward_recall_final": "1.00000000",
+        "train_reward_bacc_final": "1.00000000",
+        "train_reward_f1_final": "1.00000000",
+        "train_reward_rate_final": "0.01006250"
+      },
+      "files": [
+        {
+          "id": "c1ac3633-98bc-440b-ab79-6e64ad654245",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/c1ac3633-98bc-440b-ab79-6e64ad654245"
+        },
+        {
+          "id": "57a1e64c-b9b0-4b21-b3ff-b827c99909da",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/57a1e64c-b9b0-4b21-b3ff-b827c99909da"
+        },
+        {
+          "id": "faa9349d-1f16-4bf2-b62e-885f606e18c4",
+          "caption": "Initial state for training level: gvgai-labyrinth-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-labyrinth-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/faa9349d-1f16-4bf2-b62e-885f606e18c4"
+        },
+        {
+          "id": "9ca9bd08-9bd7-4b73-922e-0a004f055e9e",
+          "caption": "Initial state for training level: gvgai-labyrinth-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-labyrinth-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/9ca9bd08-9bd7-4b73-922e-0a004f055e9e"
+        },
+        {
+          "id": "4d149949-f921-43e2-9a33-b6647f1122d9",
+          "caption": "Initial state for training level: gvgai-labyrinth-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-labyrinth-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/4d149949-f921-43e2-9a33-b6647f1122d9"
+        },
+        {
+          "id": "48e2515a-1f90-4ed8-8d0e-1160b1324b54",
+          "caption": "Initial state for training level: gvgai-labyrinth-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-labyrinth-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/48e2515a-1f90-4ed8-8d0e-1160b1324b54"
+        },
+        {
+          "id": "db2e52bc-62a9-40df-bb81-f7965942c2df",
+          "caption": "Initial state for training level: gvgai-labyrinth-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-labyrinth-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/db2e52bc-62a9-40df-bb81-f7965942c2df"
+        },
+        {
+          "id": "0232bab4-144d-419d-9804-87b02d1c431e",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/0232bab4-144d-419d-9804-87b02d1c431e"
+        },
+        {
+          "id": "ddd88eba-72b2-4a9f-8816-30c5a9098474",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/ddd88eba-72b2-4a9f-8816-30c5a9098474"
+        },
+        {
+          "id": "1aa13977-b9f2-4f99-87a5-1fd346a04911",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/1aa13977-b9f2-4f99-87a5-1fd346a04911"
+        },
+        {
+          "id": "9f7ef6f0-3092-474e-ba53-62003ca39b2c",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/9f7ef6f0-3092-474e-ba53-62003ca39b2c"
+        },
+        {
+          "id": "6b53dbcb-b61d-480f-bbad-a1b1eac28697",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/6b53dbcb-b61d-480f-bbad-a1b1eac28697"
+        },
+        {
+          "id": "4dd091a2-3b13-44da-80eb-8ceff9728913",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/4dd091a2-3b13-44da-80eb-8ceff9728913"
+        },
+        {
+          "id": "d0123a24-eb7d-4564-9d12-ae5ee2e09647",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/d0123a24-eb7d-4564-9d12-ae5ee2e09647"
+        },
+        {
+          "id": "455c8a1f-ef47-43ef-85c9-db8a6ac10891",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/455c8a1f-ef47-43ef-85c9-db8a6ac10891"
+        },
+        {
+          "id": "96a08b0b-bc8c-4072-9cf7-f5d0df6188fb",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/96a08b0b-bc8c-4072-9cf7-f5d0df6188fb"
+        },
+        {
+          "id": "3555fd57-691b-4b4f-8e5a-fffdbdddf5a2",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-labyrinth-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/6eaf354b-4c06-4f2f-93a2-551a548294d8/3555fd57-691b-4b4f-8e5a-fffdbdddf5a2"
+        }
+      ]
+    },
+    "6": {
+      "id": "0cecd4fd-15e0-4531-87bf-4b2e3cd4e673",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1583399137183,
+      "endedTimestamp": 1583403049486,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 64,
+        "reward_class_weight": [
+          0.05,
+          0.95
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 8.0,
+            "max_width": 8.0,
+            "min_height": 8.0,
+            "max_height": 8.0,
+            "tiles": {
+              "w": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.2
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.4
+              },
+              "o": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.2
+              },
+              "*": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.2
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00000233",
+        "train_ce_reward_loss_final": "0.00009482",
+        "train_saturation_loss_final": "0.00000012",
+        "train_reward_precision_final": "0.92340226",
+        "train_reward_recall_final": "0.94219925",
+        "train_reward_bacc_final": "0.97095212",
+        "train_reward_f1_final": "0.97851562",
+        "train_reward_rate_final": "0.00943750"
+      },
+      "files": [
+        {
+          "id": "d1603e2a-32f5-4f61-9900-d06a94c3b650",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/d1603e2a-32f5-4f61-9900-d06a94c3b650"
+        },
+        {
+          "id": "56415179-d62a-41db-9de3-9fedee168167",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/56415179-d62a-41db-9de3-9fedee168167"
+        },
+        {
+          "id": "0eb1a66e-05d4-4318-b432-7a7889b7978d",
+          "caption": "Initial state for training level: gvgai-realsokoban-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-realsokoban-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/0eb1a66e-05d4-4318-b432-7a7889b7978d"
+        },
+        {
+          "id": "5579b22a-e64f-4373-b1a1-3b7d96938cd2",
+          "caption": "Initial state for training level: gvgai-realsokoban-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-realsokoban-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/5579b22a-e64f-4373-b1a1-3b7d96938cd2"
+        },
+        {
+          "id": "a73b772b-9a47-49cf-950d-0633e025227f",
+          "caption": "Initial state for training level: gvgai-realsokoban-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-realsokoban-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/a73b772b-9a47-49cf-950d-0633e025227f"
+        },
+        {
+          "id": "00e7d02e-e2d6-49c0-8b2e-0b404d098408",
+          "caption": "Initial state for training level: gvgai-realsokoban-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-realsokoban-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/00e7d02e-e2d6-49c0-8b2e-0b404d098408"
+        },
+        {
+          "id": "b3151dbe-f33c-444f-9fd8-201cf872f35a",
+          "caption": "Initial state for training level: gvgai-realsokoban-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-realsokoban-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/b3151dbe-f33c-444f-9fd8-201cf872f35a"
+        },
+        {
+          "id": "9eb8232a-b3f6-4eaa-b05c-04e3d9e4b9a3",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/9eb8232a-b3f6-4eaa-b05c-04e3d9e4b9a3"
+        },
+        {
+          "id": "39af37e8-8fa0-495c-be49-bc42299adf0a",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/39af37e8-8fa0-495c-be49-bc42299adf0a"
+        },
+        {
+          "id": "c0f25003-82a2-4fb6-a4df-fee0c3074933",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/c0f25003-82a2-4fb6-a4df-fee0c3074933"
+        },
+        {
+          "id": "c8066c8b-5c09-4b31-b12f-b5ce04d3cf29",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/c8066c8b-5c09-4b31-b12f-b5ce04d3cf29"
+        },
+        {
+          "id": "3e35e624-3a92-4be2-8286-f97b48451649",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/3e35e624-3a92-4be2-8286-f97b48451649"
+        },
+        {
+          "id": "851eb023-0b8c-4020-9c1f-33efcd7d7e1b",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/851eb023-0b8c-4020-9c1f-33efcd7d7e1b"
+        },
+        {
+          "id": "c7916330-ee01-4289-a3b4-b521b35dc9ae",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/c7916330-ee01-4289-a3b4-b521b35dc9ae"
+        },
+        {
+          "id": "159ffcaf-adec-4b92-acd7-29a923d4662f",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/159ffcaf-adec-4b92-acd7-29a923d4662f"
+        },
+        {
+          "id": "c613d3a4-af19-4c69-8918-fb5dd889527f",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/c613d3a4-af19-4c69-8918-fb5dd889527f"
+        },
+        {
+          "id": "dd81b8c5-6b9f-48a7-a315-6cc13ce077cb",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-realsokoban-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/0cecd4fd-15e0-4531-87bf-4b2e3cd4e673/dd81b8c5-6b9f-48a7-a315-6cc13ce077cb"
+        }
+      ]
+    },
+    "7": {
+      "id": "971eb685-4968-4c86-a940-70299226391e",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1583420280410,
+      "endedTimestamp": 1583422231264,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.02,
+        "reward_state_channels": 64,
+        "reward_class_weight": [
+          0.5,
+          0.5
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 5,
+            "max_width": 7.0,
+            "min_height": 5,
+            "max_height": 7.0,
+            "tiles": {
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              ".": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.8
+              },
+              "x": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.1
+              },
+              "w": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.1
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00000305",
+        "train_ce_reward_loss_final": "0.00000046",
+        "train_saturation_loss_final": "0.00000233",
+        "train_reward_precision_final": "0.99990437",
+        "train_reward_recall_final": "0.99994884",
+        "train_reward_bacc_final": "0.99997290",
+        "train_reward_f1_final": "0.99992175",
+        "train_reward_rate_final": "0.39168750"
+      },
+      "files": [
+        {
+          "id": "9a5a7449-de15-418a-8d13-19fdc262a9e8",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/971eb685-4968-4c86-a940-70299226391e/9a5a7449-de15-418a-8d13-19fdc262a9e8"
+        },
+        {
+          "id": "625eb9a2-b0e3-4959-b71a-400c7d520243",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/971eb685-4968-4c86-a940-70299226391e/625eb9a2-b0e3-4959-b71a-400c7d520243"
+        },
+        {
+          "id": "0368a27a-ae64-46fb-8054-35a9365b8045",
+          "caption": "Initial state for training level: gvgai-painter-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-painter-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/971eb685-4968-4c86-a940-70299226391e/0368a27a-ae64-46fb-8054-35a9365b8045"
+        },
+        {
+          "id": "9081f45b-9350-4324-b642-a16f6a0e1527",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-painter-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/971eb685-4968-4c86-a940-70299226391e/9081f45b-9350-4324-b642-a16f6a0e1527"
+        },
+        {
+          "id": "a653277e-2037-48d0-832a-efa6c1f9f59a",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-painter-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/971eb685-4968-4c86-a940-70299226391e/a653277e-2037-48d0-832a-efa6c1f9f59a"
+        }
+      ]
+    },
+    "8": {
+      "id": "7640b1a5-82d6-4971-a476-857945a08888",
+      "metaCategory": "NGE_Learner",
+      "startedTimestamp": 1583506798122,
+      "endedTimestamp": 1583510711977,
+      "gitTag": null,
+      "parents": [],
+      "meta": {
+        "epochs": 5000,
+        "state_channels": 64,
+        "ngpu_iterations": 2,
+        "batch_size": 32,
+        "learning_rate": 0.01,
+        "gradient_clip": 0.1,
+        "reward_loss_coeff": 0.05,
+        "reward_state_channels": 64,
+        "reward_class_weight": [
+          0.5,
+          0.5
+        ],
+        "saturation_limit": 0.99,
+        "saturation_cost_weight": 0.001,
+        "learning_rate_patience": 500,
+        "learning_rate_decay_factor": 0.5,
+        "observation_noise_std": 0.1,
+        "prediction_steps": 1,
+        "prediction_step_increase_epoch": 500,
+        "validation_repeats": 3,
+        "validation_steps": 100,
+        "data_generator": "NGE Learner",
+        "action_map": {
+          "UP": 1,
+          "LEFT": 2,
+          "DOWN": 3,
+          "RIGHT": 4
+        },
+        "train_configs": [
+          {
+            "min_width": 8,
+            "max_width": 12,
+            "min_height": 8,
+            "max_height": 12,
+            "tiles": {
+              ".": {
+                "types": [
+                  "edge",
+                  "sparse"
+                ],
+                "prob": 0.5
+              },
+              "g": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.4
+              },
+              "A": {
+                "types": [
+                  "singleton"
+                ]
+              },
+              "r": {
+                "types": [
+                  "sparse"
+                ],
+                "prob": 0.1
+              }
+            }
+          }
+        ],
+        "num_actions": 5,
+        "train_mse_observation_loss_final": "0.00002174",
+        "train_saturation_loss_final": "0.00000071",
+        "train_ce_reward_loss_final": "0.00004978",
+        "train_reward_precision_final": "0.99959677",
+        "train_reward_recall_final": "0.99943996",
+        "train_reward_bacc_final": "0.99971840",
+        "train_reward_f1_final": "0.99938160",
+        "train_reward_rate_final": "0.10412500"
+      },
+      "files": [
+        {
+          "id": "4aea339b-9295-4a5c-aa62-b23bad58be5d",
+          "caption": "Training history",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "training_history.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/4aea339b-9295-4a5c-aa62-b23bad58be5d"
+        },
+        {
+          "id": "b0b7bcb2-f0ba-490c-baf4-2b6a5b469861",
+          "caption": "NGE_Learner-NGE Learner-model",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "model.tch",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/b0b7bcb2-f0ba-490c-baf4-2b6a5b469861"
+        },
+        {
+          "id": "194bd741-5d1d-44f0-ab75-73c6a7445b6c",
+          "caption": "Initial state for training level: gvgai-zenpuzzle-lvl0-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-zenpuzzle-lvl0-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/194bd741-5d1d-44f0-ab75-73c6a7445b6c"
+        },
+        {
+          "id": "1e4739ae-24f6-4da9-87cc-64bd923b62f4",
+          "caption": "Initial state for training level: gvgai-zenpuzzle-lvl1-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-zenpuzzle-lvl1-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/1e4739ae-24f6-4da9-87cc-64bd923b62f4"
+        },
+        {
+          "id": "9490ef71-a1fa-4edc-908c-81cc728348ae",
+          "caption": "Initial state for training level: gvgai-zenpuzzle-lvl2-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-zenpuzzle-lvl2-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/9490ef71-a1fa-4edc-908c-81cc728348ae"
+        },
+        {
+          "id": "cfc73a01-7705-4572-bf55-8760fb402a98",
+          "caption": "Initial state for training level: gvgai-zenpuzzle-lvl3-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-zenpuzzle-lvl3-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/cfc73a01-7705-4572-bf55-8760fb402a98"
+        },
+        {
+          "id": "dec7b5ea-37cb-4252-9dfc-12e0e44a7882",
+          "caption": "Initial state for training level: gvgai-zenpuzzle-lvl4-v0",
+          "success": true,
+          "contentType": "application/octet-stream",
+          "filename": "gvgai-zenpuzzle-lvl4-v0_initial.npy",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/dec7b5ea-37cb-4252-9dfc-12e0e44a7882"
+        },
+        {
+          "id": "0d43e33e-b9d3-405c-82cb-090a8bcf0aca",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl0-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/0d43e33e-b9d3-405c-82cb-090a8bcf0aca"
+        },
+        {
+          "id": "d8a095a6-a43a-4149-9075-573ed9c5877b",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl0-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/d8a095a6-a43a-4149-9075-573ed9c5877b"
+        },
+        {
+          "id": "fdf53669-5156-425d-bc28-05d83d8269d1",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl1-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/fdf53669-5156-425d-bc28-05d83d8269d1"
+        },
+        {
+          "id": "e2bafda2-c08e-405f-8196-1ef032348c96",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl1-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/e2bafda2-c08e-405f-8196-1ef032348c96"
+        },
+        {
+          "id": "867821bb-e0dd-43e4-bd47-13e15ad80248",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl2-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/867821bb-e0dd-43e4-bd47-13e15ad80248"
+        },
+        {
+          "id": "d51d849b-3952-475f-8ed3-81537fe4ac18",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl2-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/d51d849b-3952-475f-8ed3-81537fe4ac18"
+        },
+        {
+          "id": "c50e1677-dc35-48ce-b59f-0f36c67767f7",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl3-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/c50e1677-dc35-48ce-b59f-0f36c67767f7"
+        },
+        {
+          "id": "96ccc2a2-4bd0-402a-b4aa-f6768913e6e8",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl3-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/96ccc2a2-4bd0-402a-b4aa-f6768913e6e8"
+        },
+        {
+          "id": "04e0f800-b5a3-4d7e-92e4-1599027c1a1b",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl4-v0_observation_mean_squared_error.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/04e0f800-b5a3-4d7e-92e4-1599027c1a1b"
+        },
+        {
+          "id": "dadb7f85-b7af-4606-930f-7ed3027a7eb8",
+          "success": true,
+          "contentType": "text/plain",
+          "filename": "gvgai-zenpuzzle-lvl4-v0_max_error_tile_mean.csv",
+          "location": "nge_gym/pre_trained/NGE_Learner/7640b1a5-82d6-4971-a476-857945a08888/dadb7f85-b7af-4606-930f-7ed3027a7eb8"
+        }
+      ]
+    }
+  }
+}

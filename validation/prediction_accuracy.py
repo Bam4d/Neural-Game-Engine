@@ -1,11 +1,13 @@
 import logging
 import uuid
+import time
 from collections import defaultdict
 
 import gym
 import numpy as np
 
 from nge_gym.environment_loader import EnvironmentLoader
+from training.util import calc_precision_recall_f1_bacc
 
 
 class PredictionAccuracyMeasure():
@@ -23,6 +25,12 @@ class PredictionAccuracyMeasure():
 
         self._original_env = None
 
+        self._observation_tile_hashes = set()
+        self._observation_tiles = []
+
+    def get_tiles(self):
+        return self._observation_tiles
+
     def __del__(self):
         self.cleanup()
 
@@ -35,7 +43,7 @@ class PredictionAccuracyMeasure():
         b = np.uint8(img1 < img2) * 254 + 1
         return a * b
 
-    def _create_tile_map(self, tiles, image, height, width):
+    def _create_tile_map(self, image, height, width):
 
         image_tiled = image.reshape(height, 10, width, 10, 3)
 
@@ -45,7 +53,7 @@ class PredictionAccuracyMeasure():
             for y in range(height):
                 smallest_diff = float("inf")
                 closest_tile = -1
-                for i, tile in enumerate(tiles):
+                for i, tile in enumerate(self._observation_tiles):
                     obs_tile = image_tiled[y, :, x]
                     diff = np.sum(self._abs_diff_uint8(obs_tile, tile))
                     if smallest_diff > diff:
@@ -62,28 +70,26 @@ class PredictionAccuracyMeasure():
 
         observation_tiled = observation.reshape(height, 10, width, 10, 3)
 
-        observation_tile_hashes = set()
-        observation_tiles = []
-
         # First pass to get all tiles
         for x in range(width):
             for y in range(height):
                 tile = observation_tiled[y, :, x]
                 tile_hash = hash(tile.data.tobytes())
-                if tile_hash not in observation_tile_hashes:
-                    observation_tile_hashes.add(tile_hash)
-                    observation_tiles.append(tile)
+                if tile_hash not in self._observation_tile_hashes:
+                    self._observation_tile_hashes.add(tile_hash)
+                    self._observation_tiles.append(tile)
 
-        observation_tile_map = self._create_tile_map(observation_tiles, observation, height, width)
-        nge_tile_map = self._create_tile_map(observation_tiles, nge_observation, height, width)
+        observation_tile_map = self._create_tile_map(observation, height, width)
+        nge_tile_map = self._create_tile_map(nge_observation, height, width)
 
-        ## PRINT THE TILE CLOSEST TILE MAP
-        full_tile_map = np.zeros_like(observation_tiled)
-        for x in range(width):
-            for y in range(height):
-                full_tile_map[y, :, x] = observation_tiles[np.uint8(nge_tile_map[y, x])]
+        tile_stats = {}
+        for i, tile in enumerate(self._observation_tiles):
+            observation_single_tile_map = observation_tile_map == i
+            nge_single_tile_map = nge_tile_map == i
+            stats = calc_precision_recall_f1_bacc(nge_single_tile_map, observation_single_tile_map)
+            tile_stats[i] = np.array(stats)
 
-        return np.sum(np.not_equal(observation_tile_map, nge_tile_map))
+        return tile_stats
 
     def _collect_data(self, steps, repeats):
 
@@ -93,7 +99,7 @@ class PredictionAccuracyMeasure():
                 f'Collecting data from NGE environment and original level [{original_level}]')
 
             mean_squared_error_repeats = []
-            max_error_tile_repeats = []
+            tile_stats_repeats = []
 
             for repeat in range(repeats):
 
@@ -114,16 +120,20 @@ class PredictionAccuracyMeasure():
                 # Have to step more than once before observation works (need to fix this in gvgai)
                 original_observation, original_reward, original_done, _ = self._original_env.step(0)
 
-                # Seed the nge nge_gym with the observation from the original nge_gym
+                # Seed the nge environment with the observation from the original environment
                 # This is all NGE needs to play the game
                 nge_env.seed(original_observation)
 
                 action_desc = sorted(self._original_env.unwrapped.get_action_meanings(), key=lambda k: k.value)
 
+                # assert nge_env.action_space == self._original_env.action_space
                 assert nge_env.observation_space == self._original_env.observation_space
 
+                # nge_env.render()
+                # original_env.render()
+
                 mean_squared_error_steps = []
-                max_error_tile_steps = []
+                tile_stats_steps = []
 
                 for s in range(steps):
                     # Produce a random action
@@ -141,17 +151,35 @@ class PredictionAccuracyMeasure():
 
                     squared_error = np.square(diff / 255.0)
 
-                    tile_difference = self._compare_observation_tiles_to_nge(original_observation, nge_observation)
+                    tile_stats = self._compare_observation_tiles_to_nge(original_observation, nge_observation)
 
                     mean_squared_error_steps.append(np.mean(squared_error))
-                    max_error_tile_steps.append(tile_difference)
+                    tile_stats_steps.append(tile_stats)
 
                     if original_done:
                         self._original_env.reset()
                         nge_env.reset()
 
                 mean_squared_error_repeats.append(np.stack(mean_squared_error_steps))
-                max_error_tile_repeats.append(np.stack(max_error_tile_steps))
+                tile_stats_repeats.append(tile_stats_steps)
+
+            num_tiles = len(self._observation_tiles)
+
+            level_tile_stats = np.zeros((repeats, steps, num_tiles, 4))
+
+            for r in range(repeats):
+                for s in range(steps):
+                    for t in range(num_tiles):
+                        if t in tile_stats_repeats[r][s]:
+                            stat = tile_stats_repeats[r][s][t]
+                        else:
+                            stat = [0.0, 0.0, np.nan, 0.5]
+                        level_tile_stats[r,s,t] = stat
+
+            tile_stats_data = {}
+            for tile_idx in range(num_tiles):
+                for m, measure in enumerate(['p', 'r', 'f1', 'bacc']):
+                    tile_stats_data[f'tile_{tile_idx}_{measure}'] = np.nanmean(level_tile_stats[:, :, tile_idx, m], axis=0)
 
             yield {
                 'steps': steps,
@@ -160,19 +188,16 @@ class PredictionAccuracyMeasure():
                 'original_level': original_level,
                 'test_data': {
                     'observation_mean_squared_error': np.mean(mean_squared_error_repeats, axis=0),
-                    'max_error_tile_mean': np.mean(max_error_tile_repeats, axis=0),
+                    **tile_stats_data
                 }
             }
 
     def calculate(self, steps, repeats):
 
-        if steps == 0 or repeats == 0:
-            return {}
-
         all_test_data = defaultdict(lambda: {})
 
         for level_comparison_data in self._collect_data(steps, repeats):
-            # mean squared error of prediction of frames over time compared to real nge_gym level
+            # mean squared error of prediction of frames over time compared to real gym level
 
             for test, data in level_comparison_data['test_data'].items():
                 all_test_data[test] = {

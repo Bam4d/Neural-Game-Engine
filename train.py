@@ -30,7 +30,7 @@ if __name__ == '__main__':
     validation_steps = args.validation_steps
 
     hyperparameters = {
-        'state_channels': 64,
+        'state_channels': 128,
         'ngpu_iterations': ngpu_iterations,
 
         'batch_size': 32,
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         'gradient_clip': 0.1,
 
         'reward_loss_coeff': 0.05,
-        'reward_state_channels': 64,
+        'reward_state_channels': 128,
         'reward_class_weight': [0.5, 0.5],
 
         'saturation_limit': 0.99,
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     original_levels = get_game_levels(game_name)
 
-    data_generator = GVGAIRandomGenerator(game_name)
+    data_generator = GVGAIRandomGenerator(game_name, generate_symmetries=False)
     initial_state_generator = GVGAILevelDataGenerator(original_levels)
 
     gym_learner = GymLearner(hyperparameters, data_generator, initial_state_generator=initial_state_generator,
@@ -83,11 +83,11 @@ if __name__ == '__main__':
         checkpoint_callback=callback_validator.get_callback(gym_learner, summary_writer)
     )
 
+    # Save the training and
+    history_files = callback_validator.save_history()
+    experiment.add_files([{'filename': f} for f in history_files])
+
     # Have to make sure GVGAI stops
     callback_validator.cleanup()
     data_generator.cleanup()
     initial_state_generator.cleanup()
-
-    # Save the training and
-    history_files = callback_validator.save_history()
-    experiment.add_files([{'filename': f} for f in history_files])
