@@ -111,3 +111,5 @@ if __name__ == "__main__":
 
     plot_results_for_experiment(ax, 0, experiment)
 
+    fig.savefig("train.pdf", bbox_inches='tight', color='m', facecolor='b', pad_inches=0)
+
