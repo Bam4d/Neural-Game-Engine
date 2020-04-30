@@ -12,7 +12,7 @@ git clone git@github.com:Bam4d/Neural-Game-Engine.git
 
 Create a conda environment using the following command:
 ```
-conda create --name 'NGE' python=3.7
+conda create --name NGE python=3.7
 ```
 
 Activate the environment
@@ -22,7 +22,7 @@ conda activate NGE
 
 Install pytorch (and cuda)
 ```
-conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+conda install pytorch torchvision tensorboard cudatoolkit=10.1 -c pytorch
 ```
 
 Install python requirements
