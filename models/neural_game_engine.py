@@ -10,7 +10,7 @@ from models.utils import tile_actions, binarize_rewards
 
 class NeuralGameEngine(nn.Module):
 
-    def __init__(self, state_channels, reward_state_channels, num_actions, observation_noise_std=None,
+    def __init__(self, state_channels, reward_state_channels, num_actions, tile_size=24, observation_noise_std=None,
                  saturation_limit=0.9, trace_handler=None, summary_writer=None):
         super().__init__()
         self._logger = logging.getLogger("Neural Game Engine")
@@ -23,11 +23,11 @@ class NeuralGameEngine(nn.Module):
         self._observation_noise_std = observation_noise_std
 
         self._observation_encoder = nn.Sequential(
-            nn.Conv2d(3, state_channels, kernel_size=10, stride=10),
+            nn.Conv2d(3, state_channels, kernel_size=tile_size, stride=tile_size),
         )
 
         self._observation_decoder = nn.Sequential(
-            nn.ConvTranspose2d(state_channels, state_channels // 2, kernel_size=10, stride=10),
+            nn.ConvTranspose2d(state_channels, state_channels // 2, kernel_size=tile_size, stride=tile_size),
             nn.ReLU(),
             nn.ConvTranspose2d(state_channels // 2, 3, 1),
             nn.Sigmoid()

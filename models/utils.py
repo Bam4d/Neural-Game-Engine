@@ -2,7 +2,7 @@ import numpy as np
 from training.environment.data_generator import DataGenerator
 
 
-def tile_actions(action_batch, width, height, sprite_size=10, num_actions=5):
+def tile_actions(action_batch, width, height, sprite_size=24, num_actions=5):
     oh_action = DataGenerator.convert_to_one_hot(action_batch, num_actions)
 
     # Tile the action batches to the same shape as the cgru state

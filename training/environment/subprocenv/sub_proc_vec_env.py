@@ -6,7 +6,7 @@ from .vec_env import VecEnv, CloudpickleWrapper, clear_mpi_env_vars
 
 def worker(remote, parent_remote, env_fn_wrappers):
     def step_env(env, action):
-        ob, reward, done, info = env.step(action)
+        ob, reward, done, info = env.step(int(action))
         if done:
             ob = env.reset()
         return ob, reward, done, info
@@ -26,6 +26,7 @@ def worker(remote, parent_remote, env_fn_wrappers):
                 remote.close()
                 break
             elif cmd == 'get_spaces_spec':
+                envs[0].reset()
                 remote.send(CloudpickleWrapper((envs[0].observation_space, envs[0].action_space, envs[0].spec)))
             elif cmd == 'get_action_meanings':
                 remote.send(CloudpickleWrapper((envs[0].get_action_meanings())))
@@ -93,10 +94,16 @@ class SubprocVecEnv(VecEnv):
         obs, rews, dones, infos = zip(*results)
         return obs, np.stack(rews), np.stack(dones), infos
 
-    def reset(self, level_data):
+    def reset(self, **kwargs):
         self._assert_not_closed()
-        for remote, level_data in zip(self.remotes, level_data):
-            remote.send(('reset', {'level_data': level_data}))
+
+        if 'level_string' in kwargs:
+            for remote, level_string in zip(self.remotes, kwargs['level_string']):
+                remote.send(('reset', {'level_string': level_string}))
+        else:
+            for remote in self.remotes:
+                remote.send(('reset', kwargs))
+
         obs = [remote.recv() for remote in self.remotes]
         obs = _flatten_list(obs)
         return obs

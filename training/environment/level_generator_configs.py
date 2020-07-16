@@ -11,9 +11,9 @@ level_generator_configs = {
         'tiles': {
             'w': {'types': ['edge', 'sparse'], 'prob': 0.1},
             '.': {'types': ['sparse'], 'prob': 0.6},
-            '1': {'types': ['sparse'], 'prob': 0.15},
+            'b': {'types': ['sparse'], 'prob': 0.15},
             'A': {'types': ['singleton']},
-            '0': {'types': ['sparse'], 'prob': 0.15}
+            'h': {'types': ['sparse'], 'prob': 0.15}
         }
     }],
     'cookmepasta': [{

@@ -8,7 +8,7 @@ class PoolingRewardDecoder(nn.Module):
         super().__init__()
 
         self._observation_encoder = nn.Sequential(
-            nn.Conv2d(3, state_channels, kernel_size=10, stride=10),
+            nn.Conv2d(3, state_channels, kernel_size=24, stride=24),
             nn.ReLU(),
             nn.BatchNorm2d(state_channels)
         )
